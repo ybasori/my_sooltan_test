@@ -1,19 +1,13 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import { persistReducer } from "redux-persist";
 import logger from "redux-logger";
-import storage from "redux-persist/lib/storage";
+import githubReducer from "./domain/github/github.reducer";
 
-const persistConfig = {
-  key: "root",
-  storage: storage,
-};
-
-const reducer = combineReducers({});
-
-const persistedReducer = persistReducer(persistConfig, reducer);
+const reducer = combineReducers({
+  github: githubReducer,
+});
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }).concat(logger),
 });
