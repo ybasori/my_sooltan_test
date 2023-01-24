@@ -1,0 +1,39 @@
+.container {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.group {
+  box-sizing: border-box;
+  position: absolute;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  max-height: 210px;
+  overflow: auto;
+}
+
+.item {
+  box-sizing: border-box;
+  display: flex;
+  height: 70px;
+  border: 1px solid #e0e0e0;
+  align-items: center;
+  padding: 5px 10px;
+  gap: 5px;
+  cursor: pointer;
+  &:hover {
+    background: #ddd;
+  }
+}
+.name {
+  font-family: "Nunito Sans";
+  font-weight: 600;
+}
+.username {
+  font-family: "Nunito Sans";
+  font-weight: 400;
+}
