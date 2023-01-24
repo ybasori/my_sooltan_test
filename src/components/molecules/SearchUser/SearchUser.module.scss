@@ -15,25 +15,10 @@
   max-height: 210px;
   overflow: auto;
 }
-
-.item {
-  box-sizing: border-box;
-  display: flex;
-  height: 70px;
-  border: 1px solid #e0e0e0;
-  align-items: center;
-  padding: 5px 10px;
-  gap: 5px;
-  cursor: pointer;
-  &:hover {
-    background: #ddd;
-  }
-}
-.name {
-  font-family: "Nunito Sans";
-  font-weight: 600;
-}
-.username {
-  font-family: "Nunito Sans";
-  font-weight: 400;
+.bg-dropdown {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 }

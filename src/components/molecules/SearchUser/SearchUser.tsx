@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSearchUser } from "@/src/domain/github/github.thunk";
 import { AppDispatch, RootState } from "@/src/store";
-import Image from "next/image";
 import { setSelectedUser } from "@/src/domain/github/github.reducer";
+import UserGithub from "../../atoms/UserGithub/UserGithub";
 
 export default function SearchUser() {
   const dispatch: AppDispatch = useDispatch();
@@ -27,32 +27,25 @@ export default function SearchUser() {
         }}
       />
       {showDropdown && (
-        <div className={styles["group"]}>
-          {githubStore.searchUser?.items.map((user, index) => (
-            <div
-              className={styles["item"]}
-              key={`user-${index}`}
-              onClick={() => {
-                setShowDropdown(false);
-                setSearch(user.login);
-                return dispatch(setSelectedUser(user));
-              }}
-            >
-              <Image
-                width={50}
-                height={50}
-                className={styles["photo"]}
-                loading="lazy"
-                src={user.avatar_url}
-                alt=""
+        <>
+          <div
+            className={styles["bg-dropdown"]}
+            onClick={() => setShowDropdown(false)}
+          ></div>
+          <div className={styles["group"]}>
+            {githubStore.searchUser?.items.map((user, index) => (
+              <UserGithub
+                key={`user-${index}`}
+                onClick={() => {
+                  setShowDropdown(false);
+                  setSearch(user.login);
+                  return dispatch(setSelectedUser(user));
+                }}
+                user={user}
               />
-              <div className={styles["summary"]}>
-                <div className={styles["name"]}>{user.login}</div>
-                <div className={styles["username"]}>{user.html_url}</div>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </>
       )}
     </div>
   );

@@ -1,4 +1,4 @@
-interface ISearchUserItem {
+export interface ISearchUserItem {
   login: string;
   id: number;
   node_id: string;
