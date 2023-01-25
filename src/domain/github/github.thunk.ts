@@ -17,3 +17,19 @@ export const getSearchUser = createAsyncThunk(
     }
   }
 );
+export const getRepoByUsername = createAsyncThunk(
+  "github/getRepoByUsername",
+  async (body: { user: string }, { rejectWithValue }) => {
+    try {
+      const result = await axios.get(
+        `https://api.github.com/users/${body.user}/repos`
+      );
+      return result;
+    } catch (err) {
+      if (err instanceof AxiosError) {
+        return rejectWithValue(err.response);
+      }
+      return rejectWithValue(err);
+    }
+  }
+);

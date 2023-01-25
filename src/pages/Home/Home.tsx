@@ -4,6 +4,7 @@ import SearchUser from "@/src/components/molecules/SearchUser/SearchUser";
 import { useSelector } from "react-redux";
 import { RootState } from "@/src/store";
 import UserGithub from "@/src/components/atoms/UserGithub/UserGithub";
+import RepoUser from "@/src/components/molecules/RepoUser/RepoUser";
 
 export default function Home() {
   const githubStore = useSelector((state: RootState) => state.github);
@@ -18,10 +19,13 @@ export default function Home() {
       <main className={styles.main}>
         <SearchUser />
         {githubStore.selectedUser && (
-          <div className={styles["selected-user"]}>
-            <div className={styles["label-selected"]}>Selected User</div>
-            <UserGithub user={githubStore.selectedUser} />
-          </div>
+          <>
+            <div className={styles["selected-user"]}>
+              <div className={styles["label-selected"]}>Selected User</div>
+              <UserGithub user={githubStore.selectedUser} />
+            </div>
+            <RepoUser />
+          </>
         )}
       </main>
     </>

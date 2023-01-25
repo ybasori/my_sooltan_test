@@ -30,4 +30,7 @@ export interface IAuth {
   searchUser: ISearchUser | null;
   errorSearchUser: unknown;
   selectedUser: ISearchUserItem | null;
+  isLoadingRepoUser: boolean;
+  repoUser: unknown;
+  errorRepoUser: unknown;
 }
