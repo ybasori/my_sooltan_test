@@ -14,5 +14,20 @@ export default function RepoUser({}: {}) {
     }
   }, [dispatch, githubStore.selectedUser]);
 
-  return <></>;
+  return (
+    <div className={styles["container"]}>
+      {githubStore.repoUser?.map((repo, index) => (
+        <a
+          rel="noreferrer"
+          target={"_blank"}
+          key={`repo-${index}`}
+          className={styles["item"]}
+          href={repo.html_url}
+        >
+          <div className={styles["name"]}>{repo.name}</div>
+          <div className={styles["url"]}>{repo.html_url}</div>
+        </a>
+      ))}
+    </div>
+  );
 }

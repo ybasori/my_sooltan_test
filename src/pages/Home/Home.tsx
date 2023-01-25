@@ -24,7 +24,10 @@ export default function Home() {
               <div className={styles["label-selected"]}>Selected User</div>
               <UserGithub user={githubStore.selectedUser} />
             </div>
-            <RepoUser />
+            <div className={styles["selected-user"]}>
+              <div className={styles["label-selected"]}>Repositories</div>
+              <RepoUser />
+            </div>
           </>
         )}
       </main>
